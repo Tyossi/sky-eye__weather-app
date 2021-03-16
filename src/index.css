@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  backdrop-filter: blur(10rem);   
+}
+
+.cool {
+   
+  height: 100%;
+  background-image: linear-gradient(to right bottom, rgba(128, 128, 128, 0.349), rgb(0, 0, 0)), url("Images/river.jpg");
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
+
+.warm {
+  height: 100%;
+  background-image: linear-gradient(to right bottom, rgba(128, 128, 128, 0.171), black), url("Images/sun.jpg");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+.landing {
+  background-image: url("Images/fiery.jpg");
+  background-position: top;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
