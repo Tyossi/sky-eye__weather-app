@@ -1,8 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import WeatherCard from "../WeatherCard/WeatherCard";
-import keys from "../keys";
-import axios from "axios"
 import "../../App.css";
 
 
@@ -18,25 +16,8 @@ const Weather = () => {
 
   const [notFound, setNotFound] = useState(false)
 
-  // const [weatherFetched, setWeatherFetched] = useState(false)
 
   const getSearchInput = useRef()
-
-
-  // const URL = "api.openweathermap.org/data/2.5/weather?q=london&units=metric&appid=4277a7fa39b9695f4d6d2526640ef8dd"
-  // const apiKey = ""
-
-
-  // const setQueryToState = (e) => {
-  //   const userInput = e.target.value
-  //   setQuery(userInput)
-  //   console.log(query)
-  // }
-  // console.log(query)
-  // const api = {
-  //   key: keys.API_KEY,
-  //   base: keys.BASE_URL,
-  // };
 
   const dateGenerator = (d) => {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
@@ -81,8 +62,6 @@ const Weather = () => {
   const url = "https://api.openweathermap.org/data/2.5/"
   const apiKey = "4277a7fa39b9695f4d6d2526640ef8dd"
 
-  //   const apiKey = "4277a7fa39b9695f4d6d2526640ef8dd"
-  // const URL = "https://api.openweathermap.org/data/2.5/"
 
   const fetchData = (e) => {
 
@@ -106,7 +85,6 @@ const Weather = () => {
 
         console.log(weather)
         setQuery("")
-        // console.log(response.data)
       } else {
         setError(true)
 
@@ -130,41 +108,41 @@ const Weather = () => {
     <div>
       {
         lazyLoading ? "loading"
-    :
-      <div
-        className={
-          typeof weather.main != "undefined"
-            ? weather.main.temp > 18
-              ? "warm"
-              : "cool"
-            : "landing"
-        }
-      >
-        <SearchBar
-          query={query}
-          fetchData={fetchData}
-          setQuery={setQuery}
-          getSearchInput={getSearchInput}
-          notFound={notFound}
-          error={error}
-        />
+          :
+          <div
+            className={
+              typeof weather.main != "undefined"
+                ? weather.main.temp > 18
+                  ? "warm"
+                  : "cool"
+                : "landing"
+            }
+          >
+            <SearchBar
+              query={query}
+              fetchData={fetchData}
+              setQuery={setQuery}
+              getSearchInput={getSearchInput}
+              notFound={notFound}
+              error={error}
+            />
 
 
-        {typeof weather.main !== "undefined" ?
-          <WeatherCard
-            weather={weather.weather[0].description}
-            temperature={weather.main.temp}
-            maxTemp={weather.main.temp_max}
-            minTemp={weather.main.temp_min}
-            city={weather.name}
-            country={weather.sys.country}
-            icon={icon}
-            date={dateGenerator(new Date())}
-          />
-          : <WeatherCard />}
+            {typeof weather.main !== "undefined" ?
+              <WeatherCard
+                weather={weather.weather[0].description}
+                temperature={weather.main.temp}
+                maxTemp={weather.main.temp_max}
+                minTemp={weather.main.temp_min}
+                city={weather.name}
+                country={weather.sys.country}
+                icon={icon}
+                date={dateGenerator(new Date())}
+              />
+              : <WeatherCard />}
 
 
-      </div>
+          </div>
       }
     </div>
 
