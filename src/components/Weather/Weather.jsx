@@ -83,7 +83,7 @@ const Weather = () => {
   const apiKey = "4277a7fa39b9695f4d6d2526640ef8dd";
 
   const fetchData = (e) => {
-    if (e.keyPress === "Enter") {
+    if (e.key === "Enter") {
       if (query) {
         fetch(`${url}weather?q=${query}&units=metric&APPID=${apiKey}`)
           .then((response) => response.json())
